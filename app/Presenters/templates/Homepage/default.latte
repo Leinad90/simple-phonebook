@@ -1,0 +1,51 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+<div id="banner">
+	<h1 n:block=title>Seznam kontaktů</h1>
+</div>
+
+<div id="content">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Jméno
+                </th>
+                <th>
+                    E-mail
+                </th>
+                <th>
+                    Telefon
+                </th>
+                <th>
+                    Detail
+                </th>
+                <th>
+                    Editovat
+                </th>                
+            </tr>
+        </thead>
+    {foreach $contacts as $row}
+        <tr>
+            <td>
+                {$row->name}
+            </td>
+            <td>
+                {$row->e_mail}
+            </td>
+            <td>
+                {$row->phone}
+            </td>
+            <td>
+                <a href="{plink detail $row->link.'_'.$row->id}">Detail</a>
+            </td>
+            <td>
+                <a href="{plink edit $row->id}">Editovat</a>
+            </td>
+        </tr>
+    {/foreach}
+    </table>
+        <a href="{plink new}">Nový kontakt</a>
+
+</div>

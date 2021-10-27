@@ -1,0 +1,4 @@
+database:
+	dsn: 'mysql:dbname=simple_phonebook;host:localhost'
+	user: user
+	password: password

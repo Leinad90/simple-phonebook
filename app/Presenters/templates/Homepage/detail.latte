@@ -1,0 +1,26 @@
+{* Latte template *}
+
+{block content}
+Detail kontaktu
+<table>
+    <tr>
+        <th>Jméno</th>
+        <td>{$contact->name}</td>
+    </tr>
+    <tr>
+        <th>E-mail</th>
+        <td>{$contact->e_mail}</td>
+    </tr>
+    <tr>
+        <th>Telefon</th>
+        <td>{$contact->phone}</td>
+    </tr>
+    <tr>
+        <th>Poznámka</th>
+        <td>{$contact->note}</td>
+    </tr>
+    <tr>
+        <th>Změnit</th>
+        <td><a href={plink edit $contact->id}>Edit</a></td>
+    </tr>
+</table>

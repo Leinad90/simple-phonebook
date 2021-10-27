@@ -1,2 +1,8 @@
-# simple-phonebook
-Aplikace bude fungovat jako jednoduchý adresář. V aplikaci bude možné vytvářet, mazat a editovat jednotlivé kontakty, které budou mít tyto položky:     Jméno a příjmení Telefonní číslo Email Dlouhá poznámka Aplikace nebude obsahovat žádné prověření ani práva, každý, kdo zná URL aplikace bude mít přístup ke všem funkcím aplikace.
+Simple Phonebook
+===
+1) Run composer install
+1) Install Database from install/install.sql
+2) cp config/local.neon.example config/local.neon
+3) Set your variables in local.neon 
+4) To webserver copy all but install/
+5) Allow users to browse www/
