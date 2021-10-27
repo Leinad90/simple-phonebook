@@ -23,7 +23,10 @@
                 </th>
                 <th>
                     Editovat
-                </th>                
+                </th>
+                <th>
+                    Smazat
+                </th>                   
             </tr>
         </thead>
     {foreach $contacts as $row}
@@ -42,6 +45,9 @@
             </td>
             <td>
                 <a href="{plink edit $row->id}">Editovat</a>
+            </td>
+            <td>
+                <a href="{plink delete $row->id}">Smazat</a>
             </td>
         </tr>
     {/foreach}

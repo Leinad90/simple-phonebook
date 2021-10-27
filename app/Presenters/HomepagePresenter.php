@@ -37,8 +37,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
         $this['form']->setDefaults($contact);
         $this->setView('new');
     }
-
-
+    
     public function actionDetail(int|string $contactId)
     {
         $this->template->contact = $contact = $this->contactModel->getDetail($contactId);
@@ -54,13 +53,21 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
         $this->template->contacts= $this->contactModel->getAll();
     }
     
+    public function actionDelete(int $contactId)
+    {
+        $this->contactModel->delete($contactId);
+        $this->flashMessage('Kontakt smazán');
+        $this->redirect('default');
+    }
+
+
     public function createComponentForm(): Form {
         $form = new Form($this,'form');
         $form->addHidden('id');
-        $form->addText('name','Jméno', maxLength: 255);
-        $form->addEmail('e_mail','E-mail')->setMaxLength(255);
-        $form->addText('phone','Telefon', maxLength: 255)->setHtmlType('tel');
-        $form->addTextArea('note', 'Poznámka');
+        $form->addText('name','Jméno', maxLength: $this->contactModel::SMALL_FIELD_LENGT);
+        $form->addEmail('e_mail','E-mail')->setMaxLength($this->contactModel::SMALL_FIELD_LENGT);
+        $form->addText('phone','Telefon', maxLength: $this->contactModel::SMALL_FIELD_LENGT)->setHtmlType('tel');
+        $form->addTextArea('note', 'Poznámka')->setMaxLength($this->contactModel::TEXT_LENGH);
         $form->addSubmit('save','Uložit');
         $form->onSuccess [] = [$this,'save'];
         return $form;

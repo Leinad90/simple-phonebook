@@ -7,6 +7,10 @@ namespace app\Services;
 
 class ContactModel Extends Database
 {
+    
+    const SMALL_FIELD_LENGT = 255; 
+    
+    const TEXT_LENGH = 65535; 
 
     /**
      * Give all contacts list
@@ -41,6 +45,11 @@ class ContactModel Extends Database
     {
         $result = $this->connection->query('UPDATE contact_list SET ',$data, 'WHERE id = ?',$data->id);
         return $result->getRowCount();
+    }
+    
+    public function delete(int $contactId)
+    {
+        $this->connection->query('DELETE FROM contact_list WHERE id = ?',$contactId);
     }
 
 }
