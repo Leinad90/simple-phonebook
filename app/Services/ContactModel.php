@@ -24,14 +24,9 @@ class ContactModel Extends Database
         return $this->connection->fetchAll($sql);
     }
     
-    public function getDetail(string|int $id) : ?\Nette\Database\Row
+    public function getDetail(int $id) : ?\Nette\Database\Row
     {
         $sql = "SELECT id, name, e_mail, phone, note, link FROM contact_list WHERE id = ?";
-        if(is_string($id))
-        {
-            $a=explode('_', $id);
-            $id= end($a);
-        }
         return $this->connection->fetch($sql,$id);
     }
     

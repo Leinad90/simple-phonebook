@@ -40,6 +40,11 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
     
     public function actionDetail(int|string $contactId)
     {
+        if(is_string($contactId))
+        {
+            $a=explode('_', $contactId);
+            $contactId= (int)end($a);
+        }
         $this->template->contact = $contact = $this->contactModel->getDetail($contactId);
         if(is_null($contact)) {
             $this->error('Kontakt nenalezen',404);
